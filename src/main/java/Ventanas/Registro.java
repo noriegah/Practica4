@@ -144,6 +144,7 @@ public class Registro extends javax.swing.JFrame {
             guardar.writeObject(nombre);
             guardar.writeObject(apellido);
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }//GEN-LAST:event_btnRegistrarJugadorActionPerformed
 
