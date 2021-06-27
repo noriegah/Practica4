@@ -4,11 +4,7 @@
  * and open the template in the editor.
  */
 package Ventanas;
-
-/**
- *
- * @author dell
- */
+import java.io.*;
 public class Registro extends javax.swing.JFrame {
 
     /**
@@ -17,6 +13,7 @@ public class Registro extends javax.swing.JFrame {
     public Registro() {
         initComponents();
     }
+    Principal principal = new Principal();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,6 +54,11 @@ public class Registro extends javax.swing.JFrame {
         jLabel3.setText("APELLIDO");
 
         btnRegistrarJugador.setText("REGISTRAR JUGADOR");
+        btnRegistrarJugador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarJugadorActionPerformed(evt);
+            }
+        });
 
         btnRegresar.setText("REGRESAR A PAGINA PRINCIPAL");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -125,10 +127,25 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        Principal principal = new Principal();
+
         principal.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnRegistrarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarJugadorActionPerformed
+        principal.setVisible(true);
+        this.setVisible(false);
+        String id=obtenerId.getText();
+        String nombre=obtenerNombre.getText();
+        String apellido=obtenerApellido.getText();
+        try {
+            ObjectOutputStream guardar=new ObjectOutputStream(new FileOutputStream(id));
+            guardar.writeObject(id);
+            guardar.writeObject(nombre);
+            guardar.writeObject(apellido);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnRegistrarJugadorActionPerformed
 
     /**
      * @param args the command line arguments
