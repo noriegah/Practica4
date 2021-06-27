@@ -5,6 +5,7 @@
  */
 package Ventanas;
 import java.io.*;
+import javax.swing.JTextField;
 public class Registro extends javax.swing.JFrame {
 
     /**
@@ -183,6 +184,8 @@ public class Registro extends javax.swing.JFrame {
         });
     }
 
+ 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrarJugador;
     private javax.swing.JButton btnRegresar;
@@ -194,4 +197,18 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JTextField obtenerId;
     private javax.swing.JTextField obtenerNombre;
     // End of variables declaration//GEN-END:variables
+
+    public JTextField getObtenerApellido() {
+        return obtenerApellido;
+    }
+
+    public JTextField getObtenerNombre() {
+        return obtenerNombre;
+    }
+
+    public JTextField getObtenerId() {
+        return obtenerId;
+    }
+
+    
 }
