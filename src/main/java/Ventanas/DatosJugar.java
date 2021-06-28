@@ -7,6 +7,7 @@ package Ventanas;
 
 import Clases.GenerarTablero;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,7 +98,7 @@ public class DatosJugar extends javax.swing.JFrame {
                 .addComponent(Filas, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(btntablero)
-                .addContainerGap(350, Short.MAX_VALUE))
+                .addContainerGap(546, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panelTablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -118,7 +119,7 @@ public class DatosJugar extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 459, Short.MAX_VALUE)
+                        .addGap(0, 499, Short.MAX_VALUE)
                         .addComponent(btnRegresar))
                     .addComponent(panelTablero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(23, 23, 23))
@@ -135,39 +136,41 @@ public class DatosJugar extends javax.swing.JFrame {
 
         for(int i=1; i<=64;i++){
         JButton boton =new JButton(""+ indice);
+        boton.setBackground(Color.orange);
         if (indice<=7){
             if(indice%2==0){
-                boton.setBackground(Color.red);
+                boton.setBackground(Color.green);
             }
         }else if (indice<=15){
             if(indice%2!=0){
-                boton.setBackground(Color.red);
+                boton.setBackground(Color.green);
             }
         }else if (indice<=23){
             if(indice%2==0){
-                boton.setBackground(Color.red);
+                boton.setBackground(Color.green);
             }
         }else if (indice<=31){
             if(indice%2!=0){
-                boton.setBackground(Color.red);
+                boton.setBackground(Color.green);
             }
         }else if (indice<=39){
             if(indice%2==0){
-                boton.setBackground(Color.red);
+                boton.setBackground(Color.green);
             }
         }else if (indice<=47){
             if(indice%2!=0){
-                boton.setBackground(Color.red);
+                boton.setBackground(Color.green);
             }
         }else if (indice<=55){
             if(indice%2==0){
-                boton.setBackground(Color.red);
+                boton.setBackground(Color.green);
             }
         }else if (indice<=63){
             if(indice%2!=0){
-                boton.setBackground(Color.red);
+                boton.setBackground(Color.green);
             }
         }
+        boton.setPreferredSize(new Dimension(100,100));
         panelTablero.add(boton);
         botones.add(boton);
         indice++;

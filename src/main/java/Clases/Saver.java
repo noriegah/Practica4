@@ -19,7 +19,7 @@ public class Saver {
         return salida;
     }
     
-    static void closeStream() throws IOException{
+    public static void closeStream() throws IOException{
         salida.close();
     }
 }
