@@ -40,6 +40,12 @@ public class DatosJugar extends javax.swing.JFrame {
 
         jLabel2.setText("Filas");
 
+        Columnas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ColumnasActionPerformed(evt);
+            }
+        });
+
         Filas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FilasActionPerformed(evt);
@@ -105,7 +111,9 @@ public class DatosJugar extends javax.swing.JFrame {
     }//GEN-LAST:event_FilasActionPerformed
 
     private void btntableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntableroActionPerformed
-        // TODO add your handling code here:
+       int columnas = Integer.parseInt(Columnas.getText());
+       int filas = Integer.parseInt(Filas.getText());
+       System.out.println(columnas+","+filas);
     }//GEN-LAST:event_btntableroActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
@@ -113,6 +121,10 @@ public class DatosJugar extends javax.swing.JFrame {
         principal.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void ColumnasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ColumnasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ColumnasActionPerformed
 
     /**
      * @param args the command line arguments
