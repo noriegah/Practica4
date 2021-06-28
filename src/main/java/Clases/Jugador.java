@@ -1,26 +1,36 @@
 
 package Clases;
-
-import chuidiang.ejemplos.objeto_fichero.MiObjectOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
+
 
 public class Jugador implements Serializable {
+    private int id;
     private String nombre;
     private String apellido;
-    private int id;
 
-    public Jugador(String nombre, String apellido, int id) {
+    public Jugador(int id, String nombre, String apellido) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.id = id;
     }
 
     public Jugador() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -38,83 +48,39 @@ public class Jugador implements Serializable {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-    
-    
-    public void anhadeFichero ()
-    {
-        File file = new File("src/guardado");
-        if(!file.exists())file.mkdirs();
-        try
-        {
-            // Se usa un ObjectOutputStream que no escriba una cabecera en
-            // el stream.
-            MiObjectOutputStream oos = new MiObjectOutputStream(
-                    new FileOutputStream("src/guardado/jugadores.obj",true));
-            // Se hace el new fuera del bucle, sólo hay una instancia de persona.
-            // Se debe usar entonces writeUnshared().
-
-            
-            oos.writeUnshared(this);
-            oos.close();
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-
-    }
-    
     
     public void guardar() throws FileNotFoundException, IOException{   
         File file = new File("src/guardado");
         if(!file.exists())file.mkdirs();
 
-        /* salida=new ObjectOutputStream(new FileOutputStream("src/guardado/jugadores.obj",true));
+        ObjectOutputStream salida=Saver.getInstance();
         salida.writeObject(this);
-        salida.close();
-        */
-        MiObjectOutputStream oos = null;
-
-        try 
-        {
-            oos = new MiObjectOutputStream(
-                    new FileOutputStream("src/guardado/jugadores.obj",true));
-            // Se hace el new fuera del bucle, sólo hay una instancia de persona.
-            // Se debe usar entonces writeUnshared().
-
-            
-            oos.writeUnshared(this);
-            
-        }
-        catch(Exception e)
-        {
-            System.out.println(e);
-        }
-        finally 
-        {
-            if (oos != null)
-            {
-                try 
-                {
-                  
-                    oos.close();
-                    
-                    System.out.println("Operación de escritura terminada");
-                } 
-                catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
-            }
-        }
-        }
+        System.out.println("\n\n Registros Almacenados.");
+        salida.reset();  
+    }
     
+    public void cargar() throws FileNotFoundException, IOException, ClassNotFoundException{
+        File file = new File("src/guardado");      
+        
+        if(file.exists()){
+            ObjectInputStream entrada=new ObjectInputStream(new FileInputStream("src/guardado/employee.obj"));
+            ArrayList<Object> newData=new ArrayList<>();
+            try{
+                while(true){
+                    newData.add(entrada.readObject());
+                }                     
+            }catch(IOException e){                
+            }finally{
+                entrada.close();  
+                System.out.println(newData.size()+" Registros Cargados.\n\n");
+                for(int i=0; i<newData.size(); i++){
+                    System.out.println(((Jugador)newData.get(i)).getId());
+                }
+            }               
+        }else{
+            return;
+        }        
+    }
+
     
 }

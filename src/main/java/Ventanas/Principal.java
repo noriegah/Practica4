@@ -5,6 +5,11 @@
  */
 package Ventanas;
 
+import Clases.Saver;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author dell
@@ -128,6 +133,14 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIngresoJugadorActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+
+        Saver save =new Saver();
+        try {
+            save.closeStream();
+        } catch (IOException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+ 
         System.exit(1);
     }//GEN-LAST:event_btnSalirActionPerformed
 

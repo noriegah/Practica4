@@ -150,10 +150,10 @@ public class Registro extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }*/
-       Jugador jugador=new Jugador(nombre, apellido, id);
+      
+        Jugador j = new Jugador(id, nombre, apellido);
         try {
-            //guardar(jugador);
-            jugador.guardar();
+            j.guardar();
         } catch (IOException ex) {
             Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
         }

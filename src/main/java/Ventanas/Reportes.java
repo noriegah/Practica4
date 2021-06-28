@@ -185,6 +185,7 @@ public class Reportes extends javax.swing.JFrame {
             registro.getObtenerId().getText();
             registro.getObtenerNombre().getText();
             registro.getObtenerApellido().getText();
+            
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -266,7 +267,7 @@ public void cargar() throws FileNotFoundException, IOException, ClassNotFoundExc
                 System.out.println(newData.size()+" Registros Cargados.\n\n");
                 for (int i=0; i<newData.size(); i++){
                     Jugador jugador=(Jugador)newData.get(i);
-                    System.out.println(jugador.getNombre());
+                    System.out.println("ID"+jugador.getId()+"Nombre"+jugador.getNombre()+" Apellido:"+jugador.getApellido());
                     System.out.println("");              
                 }
             }               
