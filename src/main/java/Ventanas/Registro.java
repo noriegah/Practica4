@@ -5,6 +5,9 @@
  */
 package Ventanas;
 import java.io.*;
+import Clases.Jugador;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTextField;
 public class Registro extends javax.swing.JFrame {
 
@@ -136,16 +139,23 @@ public class Registro extends javax.swing.JFrame {
     private void btnRegistrarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarJugadorActionPerformed
         principal.setVisible(true);
         this.setVisible(false);
-        String id=obtenerId.getText();
+        int id=Integer.parseInt(obtenerId.getText());
         String nombre=obtenerNombre.getText();
         String apellido=obtenerApellido.getText();
-        try {
+        /*try {
             ObjectOutputStream guardar=new ObjectOutputStream(new FileOutputStream(id));
             guardar.writeObject(id);
             guardar.writeObject(nombre);
             guardar.writeObject(apellido);
         } catch (Exception e) {
             e.printStackTrace();
+        }*/
+       Jugador jugador=new Jugador(nombre, apellido, id);
+        try {
+            //guardar(jugador);
+            jugador.guardar();
+        } catch (IOException ex) {
+            Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnRegistrarJugadorActionPerformed
 
@@ -208,7 +218,8 @@ public class Registro extends javax.swing.JFrame {
 
     public JTextField getObtenerId() {
         return obtenerId;
-    }
-
     
+
+    }
+        
 }

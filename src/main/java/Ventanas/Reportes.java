@@ -4,7 +4,11 @@
  * and open the template in the editor.
  */
 package Ventanas;
+import Clases.Jugador;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class Reportes extends javax.swing.JFrame {
 
     /**
@@ -12,8 +16,15 @@ public class Reportes extends javax.swing.JFrame {
      */
     public Reportes() {
         initComponents();
+        try {
+            cargar();
+        } catch (IOException ex) {
+            Logger.getLogger(Reportes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Reportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -238,4 +249,30 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JTextField nombreBuscar;
     // End of variables declaration//GEN-END:variables
+public void cargar() throws FileNotFoundException, IOException, ClassNotFoundException{
+        File file = new File("src/guardado");      
+        
+        if(file.exists()){
+            ObjectInputStream entrada=new ObjectInputStream(new FileInputStream("src/guardado/jugadores.obj"));
+            ArrayList<Object> newData=new ArrayList<>();
+            try{
+                while(true){
+                    newData.add(entrada.readObject());
+                }                     
+            }catch(IOException e){  
+                System.out.println(e);
+            }finally{
+                entrada.close();  
+                System.out.println(newData.size()+" Registros Cargados.\n\n");
+                for (int i=0; i<newData.size(); i++){
+                    Jugador jugador=(Jugador)newData.get(i);
+                    System.out.println(jugador.getNombre());
+                    System.out.println("");              
+                }
+            }               
+        }else{
+            return;
+        }        
+    }
+
 }
