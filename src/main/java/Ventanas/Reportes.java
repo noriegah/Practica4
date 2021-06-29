@@ -9,13 +9,22 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 public class Reportes extends javax.swing.JFrame {
-
+    DefaultTableModel modelo;
     /**
      * Creates new form Reportes
      */
     public Reportes() {
         initComponents();
+        modelo = new DefaultTableModel();
+        modelo.addColumn("ID");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("P. Jugadas");
+        modelo.addColumn("P. Ganadas");
+        modelo.addColumn("P. Perdidas");
+        this.tablaReportes.setModel(modelo);
         try {
             cargar();
         } catch (IOException ex) {
@@ -40,6 +49,8 @@ public class Reportes extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnRegresarReportes = new javax.swing.JButton();
         btnBuscarReportes = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaReportes = new javax.swing.JTable();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -66,32 +77,51 @@ public class Reportes extends javax.swing.JFrame {
             }
         });
 
+        tablaReportes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tablaReportes);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(187, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(44, 44, 44)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBuscarReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegresarReportes))
-                .addGap(32, 32, 32))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnRegresarReportes)
+                                .addGap(11, 11, 11))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(204, 204, 204)
+                        .addComponent(jLabel1)
+                        .addGap(94, 94, 94)
+                        .addComponent(btnBuscarReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(btnBuscarReportes)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 365, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(btnBuscarReportes))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnRegresarReportes)
-                .addGap(44, 44, 44))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
@@ -163,6 +193,8 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tablaReportes;
     // End of variables declaration//GEN-END:variables
 public void cargar() throws FileNotFoundException, IOException, ClassNotFoundException{
         File file = new File("src/guardado");      
@@ -182,7 +214,15 @@ public void cargar() throws FileNotFoundException, IOException, ClassNotFoundExc
                 for (int i=0; i<newData.size(); i++){
                     Jugador jugador=(Jugador)newData.get(i);
                     System.out.println("ID"+jugador.getId()+"Nombre"+jugador.getNombre()+" Apellido:"+jugador.getApellido());
-                    System.out.println("");              
+                    System.out.println("");
+                    String datos[]=new String[6];
+                    datos[0]=String.valueOf(jugador.getId());
+                    datos[1]=jugador.getNombre();
+                    datos[2]=jugador.getApellido();
+                    datos[3]="5";
+                    datos[4]="2";
+                    datos[5]="3";
+                    modelo.addRow(datos);
                 }
             }               
         }else{
