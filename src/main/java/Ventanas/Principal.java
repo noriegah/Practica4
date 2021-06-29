@@ -146,8 +146,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarActionPerformed
-        DatosJugar jugar=new DatosJugar();
-        jugar.setVisible(true);
+        EscogerJugadores e= new EscogerJugadores();
+        e.setVisible(true);
+        
         this.setVisible(false);
         MainFrame f = new MainFrame();
         //f.setVisible(true);

@@ -56,7 +56,7 @@ public class Tablero extends JPanel implements ComponentListener , ActionListene
     }
     public Tablero() {        
         
-        this.setBackground(Color.WHITE);
+        this.setBackground(Color.BLACK);
         
         this.addComponentListener(this);
         
@@ -73,7 +73,7 @@ public class Tablero extends JPanel implements ComponentListener , ActionListene
             for( int columna = 0 ; columna < mNumeroDeColumnas ; columna ++ ) {
                 
                 JButton temp = new JButton();
-                
+                temp.setBackground(Color.orange);
                 temp.addActionListener(this);
                 
                 temp.setText( fila + "," + columna );                            
@@ -133,9 +133,13 @@ public class Tablero extends JPanel implements ComponentListener , ActionListene
             
             JButton temp = (JButton) e.getSource() ;
             
-            temp.setBackground( getRandColor() );
+            temp.setBackground(Color.green);
             
         }
         
     }
+    
+    public void Fichas(){
+    
+}
 }
