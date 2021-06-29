@@ -46,6 +46,7 @@ public class DatosJugar extends javax.swing.JFrame {
         btntablero = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         panelTablero = new javax.swing.JPanel();
+        dado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(600, 600));
@@ -83,6 +84,14 @@ public class DatosJugar extends javax.swing.JFrame {
 
         panelTablero.setLayout(new java.awt.GridLayout(0, 8));
 
+        dado.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        dado.setText("DADO");
+        dado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dadoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,12 +107,14 @@ public class DatosJugar extends javax.swing.JFrame {
                 .addComponent(Filas, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(btntablero)
-                .addContainerGap(546, Short.MAX_VALUE))
+                .addGap(68, 546, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panelTablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnRegresar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
@@ -119,7 +130,8 @@ public class DatosJugar extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 499, Short.MAX_VALUE)
+                        .addComponent(dado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 436, Short.MAX_VALUE)
                         .addComponent(btnRegresar))
                     .addComponent(panelTablero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(23, 23, 23))
@@ -188,6 +200,11 @@ public class DatosJugar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ColumnasActionPerformed
 
+    private void dadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dadoActionPerformed
+        int movimientos=((int)(Math.random()*6+1));
+        System.out.println(movimientos);
+    }//GEN-LAST:event_dadoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -228,6 +245,7 @@ public class DatosJugar extends javax.swing.JFrame {
     private javax.swing.JTextField Filas;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JButton btntablero;
+    private javax.swing.JButton dado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel panelTablero;

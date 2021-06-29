@@ -213,7 +213,7 @@ public void cargar() throws FileNotFoundException, IOException, ClassNotFoundExc
                 System.out.println(newData.size()+" Registros Cargados.\n\n");
                 for (int i=0; i<newData.size(); i++){
                     Jugador jugador=(Jugador)newData.get(i);
-                    System.out.println("ID"+jugador.getId()+"Nombre"+jugador.getNombre()+" Apellido:"+jugador.getApellido());
+                    System.out.println("ID"+jugador.getId()+"  Nombre"+jugador.getNombre()+"  Apellido:"+jugador.getApellido());
                     System.out.println("");
                     String datos[]=new String[6];
                     datos[0]=String.valueOf(jugador.getId());
