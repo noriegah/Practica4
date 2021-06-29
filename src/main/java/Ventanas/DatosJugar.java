@@ -6,12 +6,15 @@
 package Ventanas;
 
 
+import Clases.MainFrame;
+import Clases.Tablero;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -24,10 +27,13 @@ public class DatosJugar extends javax.swing.JFrame {
      */
     private List <JButton>botones;
     private int indice;
+    public int colum;
+    public int fil;
     public DatosJugar() {
         initComponents();
         botones=new ArrayList<>();
         indice=0;
+
     }
 
     /**
@@ -45,7 +51,6 @@ public class DatosJugar extends javax.swing.JFrame {
         Filas = new javax.swing.JTextField();
         btntablero = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
-        panelTablero = new javax.swing.JPanel();
         dado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -82,8 +87,6 @@ public class DatosJugar extends javax.swing.JFrame {
             }
         });
 
-        panelTablero.setLayout(new java.awt.GridLayout(0, 8));
-
         dado.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         dado.setText("DADO");
         dado.addActionListener(new java.awt.event.ActionListener() {
@@ -98,24 +101,22 @@ public class DatosJugar extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(69, 69, 69)
-                .addComponent(jLabel1)
-                .addGap(40, 40, 40)
-                .addComponent(Columnas, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Filas, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(btntablero)
-                .addGap(68, 546, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelTablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRegresar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(dado, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(86, 86, 86)
+                        .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(40, 40, 40)
+                        .addComponent(Columnas, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(100, 100, 100)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Filas, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(btntablero)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,14 +128,14 @@ public class DatosJugar extends javax.swing.JFrame {
                     .addComponent(Columnas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Filas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btntablero))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(dado)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 436, Short.MAX_VALUE)
-                        .addComponent(btnRegresar))
-                    .addComponent(panelTablero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(23, 23, 23))
+                        .addGap(57, 57, 57)
+                        .addComponent(dado))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(btnRegresar)))
+                .addGap(23, 37, Short.MAX_VALUE))
         );
 
         pack();
@@ -146,7 +147,7 @@ public class DatosJugar extends javax.swing.JFrame {
 
     private void btntableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntableroActionPerformed
 
-        for(int i=1; i<=64;i++){
+        /*for(int i=1; i<=64;i++){
         JButton boton =new JButton(""+ indice);
         boton.setBackground(Color.orange);
         if (indice<=7){
@@ -187,7 +188,13 @@ public class DatosJugar extends javax.swing.JFrame {
         botones.add(boton);
         indice++;
         panelTablero.updateUI();
-        }
+        }*/
+        Tablero tab = new Tablero();
+        colum=Integer.parseInt(Columnas.getText());
+        fil=Integer.parseInt(Filas.getText());
+        System.out.println(colum+fil);
+        MainFrame MF=new MainFrame();
+        MF.setVisible(true);
     }//GEN-LAST:event_btntableroActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
@@ -248,7 +255,6 @@ public class DatosJugar extends javax.swing.JFrame {
     private javax.swing.JButton dado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel panelTablero;
     // End of variables declaration//GEN-END:variables
 
     public int getIndice() {
@@ -258,5 +264,8 @@ public class DatosJugar extends javax.swing.JFrame {
     private void GridLayout(int columnas, int filas) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+   
+
 
 }

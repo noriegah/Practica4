@@ -5,6 +5,7 @@
  */
 package Ventanas;
 
+import Clases.MainFrame;
 import Clases.Saver;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -148,6 +149,10 @@ public class Principal extends javax.swing.JFrame {
         DatosJugar jugar=new DatosJugar();
         jugar.setVisible(true);
         this.setVisible(false);
+        MainFrame f = new MainFrame();
+        //f.setVisible(true);
+       
+        
     }//GEN-LAST:event_btnJugarActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
