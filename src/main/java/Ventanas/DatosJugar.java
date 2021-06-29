@@ -53,6 +53,7 @@ public class DatosJugar extends javax.swing.JFrame {
         btnRegresar = new javax.swing.JButton();
         dado = new javax.swing.JButton();
         ImpresionMov = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(600, 600));
@@ -102,6 +103,8 @@ public class DatosJugar extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("NOTA: Inicia el jugador que ingreso su id en el primer jugador.");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -127,7 +130,9 @@ public class DatosJugar extends javax.swing.JFrame {
                                 .addComponent(btntablero))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(61, 61, 61)
-                        .addComponent(ImpresionMov, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(ImpresionMov, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -142,7 +147,9 @@ public class DatosJugar extends javax.swing.JFrame {
                     .addComponent(btntablero))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addGap(23, 23, 23)
                         .addComponent(dado))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(68, 68, 68)
@@ -275,6 +282,7 @@ public class DatosJugar extends javax.swing.JFrame {
     private javax.swing.JButton dado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 
     public int getIndice() {
